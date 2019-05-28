@@ -1,0 +1,90 @@
+<html>
+	<head>
+	  <title>Roll Dice Game</title>
+	    <style>
+			.dicebox {
+				width:100px;
+				background:yellow;
+				color: #000000;
+				border:#000000 2px solid;
+				padding:10px;
+				font-size:48px;
+				text-align:center;
+				margin:5px;
+			}
+
+			#dice1 {
+				float:left;
+			}
+
+			#dice2 {
+				float:right;
+			}
+		  
+			.btnblock {
+				clear:both;
+			}
+			
+			.dicewrapper {
+			  width:300px;
+			  margin:auto;
+			  padding:20px;
+			  text-align:center;
+			}
+			
+			.rollbtn {
+			  font-size:48px;
+			}
+			
+			.wrapper {
+				width:550px;
+				text-align:center;
+				margin:auto;
+				background-color:blue;
+				color: #ffffff;
+				padding:20px;
+				margin-top:100px;
+			}
+			
+			#mySound {display: none};
+		</style>
+	</head>
+	<body>
+		<div class="wrapper" id="wrapper">
+			<div class="dicewrapper">
+			  <div id="dice1" class="dicebox">0</div>
+			  <div id="dice2" class="dicebox">0</div>
+			</div>
+			<div class="btnblock">
+				<button class="rollbtn" onclick="letsRoll()">Roll The Dice</button>
+			</div>
+			<h1 id="diceresults"></h1>
+			<h2 id="doublesrolled"></h2>
+		</div>
+		<audio controls id="mySound">
+			<source src="https://codedigs.com/students/assets/sounds/fireworks.mp3" type="audio/mpeg">
+		</audio>
+		
+		<script>
+			function letsRoll() {
+				let number1 = Math.floor(Math.random() * 6) + 1;
+				let number2 = Math.floor(Math.random() * 6) + 1;
+				let dicetotal = number1 + number2;
+				let sound = document.getElementById("mySound");
+				
+				document.getElementById("dice1").innerHTML = number1;
+				document.getElementById("dice2").innerHTML = number2;
+				document.getElementById("diceresults").innerHTML = "Total: " + dicetotal;
+				
+				if(number1 === number2) {
+					doublesrolled.innerHTML = "CONGRATS! YOU GOT DOUBLES! LET'S CELEBRATE!!";
+					sound.play();
+					document.body.style.backgroundImage = "url('https://codedigs.com/students/assets/img/fireworks-back.gif')";
+				} else {
+				   sound.pause();
+				   document.body.style.backgroundImage = "";
+				}
+			}
+		</script>
+	</body>
+</html>
